@@ -6,9 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const taskList = document.getElementById('tasks');
   const sortButton = document.getElementById('sort-button');
 
-  // Add event listener for form submission
+  // Event listener for form submission
   form.addEventListener('submit', (event) => {
-    event.preventDefault(); // Prevent page reload
+    event.preventDefault(); // no page reload
 
     const taskInput = document.getElementById('new-task-description');
     const prioritySelect = document.getElementById('priority-level');
@@ -18,19 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (taskValue !== "") {
       addTaskToList(taskValue, priorityValue);
-      taskInput.value = ""; // Clear the input field
+      taskInput.value = ""; // this clears the input field
     }
   });
 
-  // Add event listener for sorting
+  // event listener
   sortButton.addEventListener('click', sortTasks);
 
-  // Function to add a task to the list
+  // function add
   function addTaskToList(task, priority) {
     const listItem = document.createElement('li');
     listItem.textContent = task;
 
-    // Set the color based on priority
+    // color setting
     switch (priority) {
       case 'high':
         listItem.style.color = 'red';
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         break;
     }
 
-    // Add a delete button
+    // delete button
     const deleteButton = document.createElement('button');
     deleteButton.textContent = "Remove";
     deleteButton.style.marginLeft = '10px';
@@ -51,11 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
       taskList.removeChild(listItem);
     });
 
-    listItem.appendChild(deleteButton); // Add the delete button to the task
-    taskList.appendChild(listItem); // Add the task to the list
+    listItem.appendChild(deleteButton); 
+    taskList.appendChild(listItem); 
   }
 
-  // Function to sort tasks by priority
+  // sorting array
   function sortTasks() {
     const tasks = Array.from(taskList.children);
 
@@ -64,6 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return priorityOrder[a.style.color] - priorityOrder[b.style.color];
     });
 
-    tasks.forEach(task => taskList.appendChild(task)); // Re-append in sorted order
+    tasks.forEach(task => taskList.appendChild(task)); 
   }
 });
